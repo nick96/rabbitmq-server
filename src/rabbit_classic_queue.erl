@@ -220,7 +220,7 @@ credit(CTag, Credit, Drain, State) ->
     delegate:invoke_no_result(State#?STATE.pid,
                               {gen_server2, cast,
                                [{credit, ChPid, CTag, Credit, Drain}]}),
-    State.
+    {State, []}.
 
 handle_event({confirm, MsgSeqNos, Pid}, #?STATE{qref = QRef,
                                                 unconfirmed = U0} = State) ->
